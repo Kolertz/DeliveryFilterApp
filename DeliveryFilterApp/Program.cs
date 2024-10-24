@@ -8,22 +8,22 @@ using System.Globalization;
 
 // Настройка конфигурации
 var configuration = new ConfigurationBuilder()
+    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)  // Чтение из файла конфигурации, файл обязателен т.к. там настроен формат даты DateFormat
     // Использованы switchMappings для соответствия стандарту конфигрурации PascalCase
     .AddCommandLine(args, new Dictionary<string, string>
     {
         { "-_cityDistrict", "DeliveryServiceSettings:CityDistrict" },                    // Указанный район для фильтрации заказов
         { "-_firstDeliveryDateTime", "DeliveryServiceSettings:FirstDeliveryDateTime" },  // Время первой доставки для фильтрации
-        { "-_deliveryOrder", "DeliveryServiceSettings:DeliveryOrder" },                  // Путь для сохранения отфильтрованных заказов
-        { "-_filteredOrdersFile", "DeliveryServiceSettings:OriginalOrder" },             // Путь к файлу с исходными данными заказов
+        { "-_deliveryOrder", "DeliveryServiceSettings:FilteredOrder" },                  // Путь для сохранения отфильтрованных заказов
+        { "-_originalOrder", "DeliveryServiceSettings:OriginalOrder" },             // Путь к файлу с исходными данными заказов
         { "-_deliveryLog", "Logging:FileLogging:Path" },
 
         { "--_cityDistrict", "DeliveryServiceSettings:CityDistrict" },
         { "--_firstDeliveryDateTime", "DeliveryServiceSettings:FirstDeliveryDateTime" },
-        { "--_deliveryOrder", "DeliveryServiceSettings:DeliveryOrder" },
-        { "--_filteredOrdersFile", "DeliveryServiceSettings:OriginalOrder" },
+        { "--_deliveryOrder", "DeliveryServiceSettings:FilteredOrder" },
+        { "--_originalOrder", "DeliveryServiceSettings:OriginalOrder" },
         { "--_deliveryLog", "Logging:FileLogging:Path" }
     })
-    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)  // Чтение из файла конфигурации, файл обязателен т.к. там настроен формат даты DateFormat
     .Build();
 
 // Получение параметров:
@@ -40,7 +40,7 @@ var logFilePath = configuration["Logging:FileLogging:Path"]
     ?? "delivery.log";
 
 // Путь для сохранения отфильтрованных заказов
-var orderFilePath = configuration["DeliveryServiceSettings:DeliveryOrder"]
+var orderFilePath = configuration["DeliveryServiceSettings:FilteredOrder"]
     ?? "filtered_orders.csv";
 
 // Путь к файлу с исходными данными заказов
