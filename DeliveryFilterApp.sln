@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34607.119
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeliveryFilterApp", "DeliveryFilterApp.csproj", "{5564A2CE-CC46-4ED9-9140-94FC0246CCFB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeliveryFilterApp", "DeliveryFilterApp\DeliveryFilterApp.csproj", "{5564A2CE-CC46-4ED9-9140-94FC0246CCFB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeliveryFilterApp.Tests", "..\DeliveryFilter.Tests\DeliveryFilterApp.Tests.csproj", "{83E379D9-3BBD-429E-90B2-703863A4E94E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeliveryFilterApp.Tests", "DeliveryFilterApp.Tests\DeliveryFilterApp.Tests.csproj", "{83E379D9-3BBD-429E-90B2-703863A4E94E}"
 	ProjectSection(ProjectDependencies) = postProject
 		{5564A2CE-CC46-4ED9-9140-94FC0246CCFB} = {5564A2CE-CC46-4ED9-9140-94FC0246CCFB}
 	EndProjectSection

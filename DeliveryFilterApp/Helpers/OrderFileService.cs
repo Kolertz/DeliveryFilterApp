@@ -1,6 +1,7 @@
 ﻿using DeliveryFilterApp.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using System.Globalization;
 
 namespace DeliveryFilterApp.Helpers
 {
@@ -30,7 +31,7 @@ namespace DeliveryFilterApp.Helpers
                         {
                             OrderId = parts[0],
 
-                            Weight = double.TryParse(parts[1], out var weight)
+                            Weight = double.TryParse(parts[1], NumberStyles.Any, CultureInfo.InvariantCulture, out var weight)
                                 ? weight
                                 : throw new FormatException("Некорректный формат веса"),
 
