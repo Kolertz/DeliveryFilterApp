@@ -7,7 +7,7 @@ namespace DeliveryFilterApp.Helpers
     {
         public bool ValidateOrder(OrderModel order)
         {
-            if (string.IsNullOrEmpty(order.OrderId))
+            if (order.OrderId <= 0)
             {
                 _logger.LogWarning("У заказа отсутствует идентификатор.");
                 return false;

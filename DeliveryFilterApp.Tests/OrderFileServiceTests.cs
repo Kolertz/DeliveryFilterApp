@@ -33,12 +33,12 @@ namespace DeliveryFilterApp.Tests
 
             // Assert
             Assert.Equal(2, result.Count);
-            Assert.Equal("1", result[0].OrderId);
+            Assert.Equal(1, result[0].OrderId);
             Assert.Equal(5.5, result[0].Weight);
             Assert.Equal("Center", result[0].CityDistrict);
             Assert.Equal(new DateTime(2024, 10, 24), result[0].DeliveryDateTime);
 
-            Assert.Equal("2", result[1].OrderId);
+            Assert.Equal(2, result[1].OrderId);
             Assert.Equal(7.0, result[1].Weight);
             Assert.Equal("South", result[1].CityDistrict);
             Assert.Equal(new DateTime(2024, 10, 25), result[1].DeliveryDateTime);
@@ -62,7 +62,7 @@ namespace DeliveryFilterApp.Tests
             Assert.Single(result); // Ожидаем, что будет только 1 корректный заказ
 
             // Проверяем данные корректного заказа
-            Assert.Equal("1", result[0].OrderId);
+            Assert.Equal(1, result[0].OrderId);
             Assert.Equal(5.5, result[0].Weight);
             Assert.Equal("Center", result[0].CityDistrict);
             Assert.Equal(new DateTime(2024, 10, 24), result[0].DeliveryDateTime);

@@ -21,7 +21,7 @@ namespace DeliveryFilterApp.Tests
             // Arrange
             var validOrder = new OrderModel
             {
-                OrderId = "1",
+                OrderId = 1,
                 Weight = 10.5,
                 CityDistrict = "Center",
                 DeliveryDateTime = new DateTime(2024, 10, 22, 10, 0, 0)
@@ -40,7 +40,7 @@ namespace DeliveryFilterApp.Tests
             // Arrange
             var invalidOrder = new OrderModel
             {
-                OrderId = "",  // Некорректный ID
+                OrderId = -5,  // Некорректный ID
                 Weight = 10.5,
                 CityDistrict = "Center",
                 DeliveryDateTime = new DateTime(2024, 10, 22, 10, 0, 0)
@@ -59,7 +59,7 @@ namespace DeliveryFilterApp.Tests
             // Arrange
             var invalidOrder = new OrderModel
             {
-                OrderId = "2",
+                OrderId = 2,
                 Weight = -5,  // Некорректный вес
                 CityDistrict = "Center",
                 DeliveryDateTime = new DateTime(2024, 10, 22, 10, 0, 0)
@@ -78,7 +78,7 @@ namespace DeliveryFilterApp.Tests
             // Arrange
             var invalidOrder = new OrderModel
             {
-                OrderId = "3",
+                OrderId = 3,
                 Weight = 5,
                 CityDistrict = "",  // Некорректный район
                 DeliveryDateTime = new DateTime(2024, 10, 22, 10, 0, 0)
@@ -97,7 +97,7 @@ namespace DeliveryFilterApp.Tests
             // Arrange
             var invalidOrder = new OrderModel
             {
-                OrderId = "4",
+                OrderId = 4,
                 Weight = 5,
                 CityDistrict = "Center",
                 DeliveryDateTime = default  // Некорректная дата

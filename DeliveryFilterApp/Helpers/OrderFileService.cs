@@ -29,7 +29,9 @@ namespace DeliveryFilterApp.Helpers
                     {
                         var order = new OrderModel
                         {
-                            OrderId = parts[0],
+                            OrderId = int.TryParse(parts[0], out var orderId) 
+                            ? orderId 
+                            : throw new FormatException("Некорректный формат идентификатора заказа"),
 
                             Weight = double.TryParse(parts[1], NumberStyles.Any, CultureInfo.InvariantCulture, out var weight)
                                 ? weight
@@ -59,7 +61,7 @@ namespace DeliveryFilterApp.Helpers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Ошибка при чтении файла заказов.");
-                throw;
+                Environment.Exit(1);
             }
 
             return orders;
@@ -79,7 +81,7 @@ namespace DeliveryFilterApp.Helpers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Ошибка при записи файла заказов.");
-                throw;
+                Environment.Exit(1);
             }
         }
     }
