@@ -41,7 +41,7 @@ namespace DeliveryFilterApp.Helpers
                                 parts[3],
                                 _configuration["DeliveryServiceSettings:DateFormat"]!,
                                 null,
-                                System.Globalization.DateTimeStyles.None,
+                                DateTimeStyles.None,
                                 out var deliveryDateTime)
                                 ? deliveryDateTime
                                 : throw new FormatException("Некорректный формат даты")
@@ -59,9 +59,28 @@ namespace DeliveryFilterApp.Helpers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Ошибка при чтении файла заказов.");
+                throw;
             }
 
             return orders;
+        }
+
+        public void SaveFilteredOrders(IEnumerable<OrderModel> filteredOrders, string filePath)
+        {
+            _logger.LogInformation("Сохранение отфильтрованных заказов в файл: {FilePath}", filePath);
+            try
+            {
+                using var writer = new StreamWriter(filePath);
+                foreach (var order in filteredOrders)
+                {
+                    writer.WriteLine($"{order.OrderId},{order.Weight},{order.CityDistrict},{order.DeliveryDateTime}");
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Ошибка при записи файла заказов.");
+                throw;
+            }
         }
     }
 }

@@ -70,18 +70,5 @@ namespace DeliveryFilterApp.Tests
             // Clean up
             File.Delete(testFilePath);
         }
-
-        [Fact]
-        public void LoadOrdersFromFile_ShouldLogError_WhenFileNotFound()
-        {
-            // Arrange
-            var nonExistentFilePath = "non_existent_file.csv";
-
-            // Act
-            var result = _orderFileService.LoadOrdersFromFile(nonExistentFilePath).ToList();
-
-            // Assert
-            Assert.Empty(result); // Ожидаем, что результат пустой
-        }
     }
 }

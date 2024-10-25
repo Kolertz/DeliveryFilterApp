@@ -6,7 +6,5 @@ namespace DeliveryFilterApp.Helpers
     {
         IEnumerable<OrderModel> FilterOrdersByDistrictAndTime(
             IEnumerable<OrderModel> orders, string district, DateTime firstDeliveryTime);
-
-        void SaveFilteredOrders(IEnumerable<OrderModel> filteredOrders, string filePath);
     }
 }

@@ -93,7 +93,7 @@ try
     var filteredOrders = deliveryService.FilterOrdersByDistrictAndTime(validOrders, cityDistrict, firstDeliveryDateTime);
 
     // Сохранение результата фильтрации
-    deliveryService.SaveFilteredOrders(filteredOrders, orderFilePath);
+    orderFileService.SaveFilteredOrders(filteredOrders, orderFilePath);
 
     logger.LogInformation("Программа завершена успешно");
 }
